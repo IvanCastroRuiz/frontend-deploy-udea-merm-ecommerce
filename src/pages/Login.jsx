@@ -14,7 +14,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [alerta, setAlerta] = useState({});
 
-    const { setAuth } = useAuth();
+    const { auth, setAuth } = useAuth();
 
     const navigate = useNavigate();
 
@@ -36,11 +36,11 @@ const Login = () => {
             });
 
             localStorage.setItem('token', data.token);
-
-            //console.log(data);
             // Validar la redireccion
             setAuth(data);
-            navigate('/perfil');
+            console.log(auth);
+            navigate('/perfil')
+            
         } catch (error) {
             setAlerta({
                 msg: error.response.data.msg,
